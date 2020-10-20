@@ -24,3 +24,5 @@ yarn-error.log*
 
 #tailwind build
 src/tailwind.output.cs
+
+.env
