@@ -7,6 +7,7 @@
 import storeFactory from "./store";
 
 const store = storeFactory();
+console.log({ store: store.getState() });
 
 // export default function App() {
 //   return (

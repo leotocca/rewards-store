@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-const redeemProductReducer = (state = initialState, action) => {
+export const redeemProductReducer = (state = initialState, action) => {
   switch (action.type) {
     case REDEEM_PRODUCT_BEGIN:
       return {
@@ -34,5 +34,3 @@ const redeemProductReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default redeemProductReducer;

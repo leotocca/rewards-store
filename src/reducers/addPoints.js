@@ -2,7 +2,7 @@ import {
   ADD_POINTS_BEGIN,
   ADD_POINTS_FAILURE,
   ADD_POINTS_SUCCESS,
-} from "../actions";
+} from "../actions/addPoints";
 
 const initialState = {
   points: 0,
@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-const addPointsReducer = (state = initialState, action) => {
+export const addPointsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POINTS_BEGIN:
       return {
@@ -34,5 +34,3 @@ const addPointsReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default addPointsReducer;

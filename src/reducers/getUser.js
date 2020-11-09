@@ -1,4 +1,8 @@
-import { GET_USER_BEGIN, GET_USER_FAILURE, GET_USER_SUCCESS } from "../actions";
+import {
+  GET_USER_BEGIN,
+  GET_USER_FAILURE,
+  GET_USER_SUCCESS,
+} from "../actions/getUser";
 
 const initialState = {
   userData: {},
@@ -6,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-const getUserReducer = (state = initialState, action) => {
+export const getUserReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER_BEGIN:
       return {
@@ -30,5 +34,3 @@ const getUserReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default getUserReducer;

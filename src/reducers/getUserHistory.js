@@ -2,7 +2,7 @@ import {
   GET_USER_HISTORY_BEGIN,
   GET_USER_HISTORY_FAILURE,
   GET_USER_HISTORY_SUCCESS,
-} from "../actions";
+} from "../actions/getUserHistory";
 
 const initialState = {
   userHistory: {},
@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-const getUserHistoryReducer = (state = initialState, action) => {
+export const getUserHistoryReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER_HISTORY_BEGIN:
       return {
@@ -34,5 +34,3 @@ const getUserHistoryReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default getUserHistoryReducer;

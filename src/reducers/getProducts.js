@@ -2,7 +2,7 @@ import {
   GET_PRODUCTS_BEGIN,
   GET_PRODUCTS_FAILURE,
   GET_PRODUCTS_SUCCESS,
-} from "../actions";
+} from "../actions/getProducts";
 
 const initialState = {
   products: [],
@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-const getProductsReducer = (state = initialState, action) => {
+export const getProductsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PRODUCTS_BEGIN:
       return {
@@ -35,5 +35,3 @@ const getProductsReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default getProductsReducer;

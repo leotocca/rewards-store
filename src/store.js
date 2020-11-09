@@ -6,6 +6,4 @@ const storeFactory = () => createStore(rootReducer, applyMiddleware(thunk));
 
 export default storeFactory;
 
-const store = storeFactory();
-
-console.log({ store: store.getState() });
+// const store = storeFactory();
