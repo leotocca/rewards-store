@@ -18,7 +18,8 @@ export function addPointsAPICall(points) {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: process.env.API_TOKEN,
+        Authorization:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjg1YTM4ODJiNjU3MDAwMWZjZTZjNDgiLCJpYXQiOjE2MDI1OTM2NzJ9.gfWDJZ2ivAHboxrzGa4awAzf-UTVmDHSJNqIDb8Ahwk",
       },
     })
       .then((response) => response.json())

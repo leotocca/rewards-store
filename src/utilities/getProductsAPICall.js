@@ -2,7 +2,7 @@ import {
   getProductsBegin,
   getProductsFailure,
   getProductsSuccess,
-} from "../actions/geProducts";
+} from "../actions/getProducts";
 
 export function getProductsAPICall() {
   return (dispatch) => {
@@ -12,11 +12,14 @@ export function getProductsAPICall() {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: process.env.API_TOKEN,
+        // TODO: Setear correctamente el .env
+        Authorization:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjg1YTM4ODJiNjU3MDAwMWZjZTZjNDgiLCJpYXQiOjE2MDI1OTM2NzJ9.gfWDJZ2ivAHboxrzGa4awAzf-UTVmDHSJNqIDb8Ahwk",
       },
     })
       .then((response) => response.json())
       .then((products) => {
+        console.log({ products });
         dispatch(getProductsSuccess(products));
       })
       .catch((error) => dispatch(getProductsFailure(error)));

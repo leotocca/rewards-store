@@ -1,14 +1,16 @@
-import { addPoints } from "./addPoints";
-import { getProducts } from "./getProducts";
-import { getUser } from "./getUser";
-import { getUserHistory } from "./getUserHistory";
-import { redeemProduct } from "./redeemProducts";
+import { addPointsReducer } from "./addPoints";
+import { getProductsReducer } from "./getProducts";
+import { getUserReducer } from "./getUser";
+import { getUserHistoryReducer } from "./getUserHistory";
+import { redeemProductReducer } from "./redeemProduct";
+import { filtersReducer } from "./filters";
 import { combineReducers } from "redux";
 
 export default combineReducers({
-  addPoints,
-  getProducts,
-  getUser,
-  getUserHistory,
-  redeemProduct,
+  addPointsReducer,
+  getProductsReducer,
+  getUserReducer,
+  getUserHistoryReducer,
+  redeemProductReducer,
+  filtersReducer,
 });

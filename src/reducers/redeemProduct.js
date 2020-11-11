@@ -2,7 +2,7 @@ import {
   REDEEM_PRODUCT_BEGIN,
   REDEEM_PRODUCT_FAILURE,
   REDEEM_PRODUCT_SUCCESS,
-} from "../actions";
+} from "../actions/redeemProduct";
 
 const initialState = {
   hasRedeemed: [],
