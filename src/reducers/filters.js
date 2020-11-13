@@ -5,7 +5,7 @@ const initialState = {
   searchKeyword: undefined,
 };
 
-export const filtersReducer = (state = initialState, action) => {
+export const filters = (state = initialState, action) => {
   switch (action.type) {
     case SET_SEARCH_KEYWORD:
       return {

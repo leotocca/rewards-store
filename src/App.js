@@ -4,6 +4,9 @@ import React from "react";
 // import Routes from "./Routes";
 // import Navbar from "./components/Navbar";
 // import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { Navbar } from "./components/Navbar";
+import { Filters } from "./components/Filters";
 import { Provider } from "react-redux";
 import storeFactory from "./store";
 import { Products } from "./views/Products";
@@ -17,7 +20,10 @@ store.subscribe(logTheStore);
 export default function App() {
   return (
     <Provider store={store}>
-      <div className="max-w-md mx-auto flex p-6 bg-gray-100 mt-10 rounded-lg shadow-xl">
+      <div className="w-full">
+        <Navbar />
+        <Header />
+        <Filters />
         <Products />
       </div>
     </Provider>

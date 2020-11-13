@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-export const redeemProductReducer = (state = initialState, action) => {
+export const redeemProduct = (state = initialState, action) => {
   switch (action.type) {
     case REDEEM_PRODUCT_BEGIN:
       return {

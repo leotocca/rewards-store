@@ -19,7 +19,6 @@ export function getProductsAPICall() {
     })
       .then((response) => response.json())
       .then((products) => {
-        console.log({ products });
         dispatch(getProductsSuccess(products));
       })
       .catch((error) => dispatch(getProductsFailure(error)));

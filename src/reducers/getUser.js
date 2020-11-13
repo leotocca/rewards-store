@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-export const getUserReducer = (state = initialState, action) => {
+export const getUser = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER_BEGIN:
       return {

@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-export const getUserHistoryReducer = (state = initialState, action) => {
+export const getUserHistory = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER_HISTORY_BEGIN:
       return {

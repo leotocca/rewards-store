@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-export const getProductsReducer = (state = initialState, action) => {
+export const getProducts = (state = initialState, action) => {
   switch (action.type) {
     case GET_PRODUCTS_BEGIN:
       return {
