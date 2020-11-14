@@ -1,23 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductsAPICall } from "../utilities/getProductsAPICall";
-
-// import { addPointsAPICall } from "../utilities/addPointsAPICall";
-import { getUserAPICall } from "../utilities/getUserAPICall";
-import { getUserHistoryAPICall } from "../utilities/getUserHistoryAPICall";
-// import { redeemProductAPICall } from "../utilities/redeemProductAPICall";
+import { ProductList } from "../components/ProductList";
 
 export const Products = () => {
-  // const { products } = useSelector((state) => state.getProducts);
-
   const dispatch = useDispatch();
 
-  dispatch(getProductsAPICall());
+  useEffect(() => {
+    dispatch(getProductsAPICall());
+  }, [dispatch]);
 
-  dispatch(getUserAPICall());
-  dispatch(getUserHistoryAPICall());
+  const { products } = useSelector((state) => state.getProducts);
 
-  // console.log({ products });
-
-  return <div className="w-full"></div>;
+  console.log({ products });
+  return (
+    <div className="w-full flex justify-center">
+      <ProductList products={products} />
+    </div>
+  );
 };

@@ -1,0 +1,28 @@
+.single-product {
+  position: relative;
+  overflow: hidden;
+  /* margin: 20px 40px; */
+}
+
+.single-product-description-overlay {
+  position: absolute;
+  top: 100%;
+  width: 95%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all;
+  transition-duration: 400ms;
+  border-radius: 5px;
+  margin: 3px;
+  z-index: 1;
+  background-color: rgba(10, 212, 250, 0.9);
+}
+
+.single-product:hover .single-product-description-overlay {
+  top: 0;
+  opacity: 1;
+}
