@@ -1,6 +1,5 @@
 import React from "react";
 import coin from "../../assets/svg/navbar/coin.svg";
-import shoppingBag from "../../assets/svg/product/shopping-bag.svg";
 import "./Product.css";
 
 export const Product = (props) => {

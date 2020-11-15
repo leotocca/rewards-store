@@ -13,7 +13,11 @@ module.exports = {
     "public/**/*.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        brand: "#0AD4FA",
+      },
+    },
   },
   variants: {},
   plugins: [],

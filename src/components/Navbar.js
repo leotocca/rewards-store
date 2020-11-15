@@ -1,18 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../assets/svg/navbar/logo.svg";
 import coin from "../assets/svg/navbar/coin.svg";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserAPICall } from "../utilities/getUserAPICall";
 
 export const Navbar = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserAPICall());
+  }, [dispatch]);
+
+  const { userData } = useSelector((state) => state.getUser);
+  const { name, points } = userData;
   return (
-    <div className="w-full flex py-3">
+    <div className="w-full flex py-3 sticky top-0 bg-white z-10 shadow">
       <div className="flex-grow">
         <img src={logo} alt="" className="ml-8 h-6 w-6" />
       </div>
+      {/*TODO: Wire the methods for adding points and seeing history*/}
+
+      <div className="flex items-center border-r border-gray-400 mr-8 pr-8 ">
+        <p className="text-gray-700 hover:text-brand text-md mr-6 font-semibold select-none cursor-pointer transition-all duration-150">
+          Add points
+        </p>
+        <p className="text-gray-700 hover:text-brand text-md font-semibold select-none cursor-pointer transition-all duration-150">
+          History
+        </p>
+      </div>
+
       <div className="flex mr-8 items-center">
-        <p className="text-gray-700 text-md mr-2 font-semibold">Julia Coi</p>
-        <div className="bg-gray-300 flex items-center rounded-full py-1 px-3 select-none hover:shadow-md">
-          <p className="text-sm text-gray-700 mr-2">6000</p>
-          <img src={coin} alt="" className="h-3 w-3" />
+        <p className="text-gray-700 text-md mr-2 font-semibold">{name}</p>
+        <div className="bg-gray-300 flex items-center rounded-full py-1 px-3 select-none shadow hover:shadow-md transition-all duration-300">
+          <p className="text-sm text-gray-700 mr-2">{points}</p>
+          <img src={coin} alt="coin" className="h-3 w-3" />
         </div>
       </div>
     </div>

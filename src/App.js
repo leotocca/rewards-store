@@ -20,7 +20,7 @@ store.subscribe(logTheStore);
 export default function App() {
   return (
     <Provider store={store}>
-      <div className="w-full">
+      <div className="w-full relative">
         <Navbar />
         <Header />
         <div className="w-full bg-gray-100 pt-20">
