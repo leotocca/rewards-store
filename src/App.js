@@ -23,8 +23,10 @@ export default function App() {
       <div className="w-full">
         <Navbar />
         <Header />
-        <Filters />
-        <Products />
+        <div className="w-full bg-gray-100 pt-20">
+          <Filters />
+          <Products />
+        </div>
       </div>
     </Provider>
   );
