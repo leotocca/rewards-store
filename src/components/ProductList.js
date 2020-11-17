@@ -1,14 +1,19 @@
 import React from "react";
 import { Product } from "./Product/Product";
+import { sortProducts } from "../utilities/sortProducts";
 
 export const ProductList = (props) => {
-  const { products } = props;
-  console.log({ products });
+  const { products, filter } = props;
+
+  const sortedProducts = sortProducts(products, filter);
+
+  console.log({ sortedProducts });
   return (
     <div className="w-5/6 flex flex-wrap justify-around items-center py-8">
-      {products.map((product) => (
-        <Product product={product} key={product._id} />
-      ))}
+      {sortedProducts &&
+        sortedProducts.map((product) => (
+          <Product product={product} key={product._id} />
+        ))}
     </div>
   );
 };

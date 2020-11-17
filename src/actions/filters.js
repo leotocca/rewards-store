@@ -1,9 +1,9 @@
-export const SET_PRODUCT_CATEGORY = "SET_PRODUCT_CATEGORY";
+export const SET_ACTIVE_FILTER = "SET_ACTIVE_FILTER";
 export const SET_SEARCH_KEYWORD = "SET_SEARCH_KEYWORD";
 
-export const setProductCategory = (category) => ({
-  type: SET_PRODUCT_CATEGORY,
-  payload: { category },
+export const setActiveFilterAction = (filter) => ({
+  type: SET_ACTIVE_FILTER,
+  payload: { filter },
 });
 
 export const setSearchKeyword = (keyword) => ({

@@ -1,7 +1,7 @@
-import { SET_SEARCH_KEYWORD, SET_PRODUCT_CATEGORY } from "../actions/filters";
+import { SET_SEARCH_KEYWORD, SET_ACTIVE_FILTER } from "../actions/filters";
 
 const initialState = {
-  productCategory: undefined,
+  activeFilter: undefined,
   searchKeyword: undefined,
 };
 
@@ -10,13 +10,12 @@ export const filters = (state = initialState, action) => {
     case SET_SEARCH_KEYWORD:
       return {
         ...state,
-
         searchKeyword: action.payload.keyword,
       };
-    case SET_PRODUCT_CATEGORY:
+    case SET_ACTIVE_FILTER:
       return {
         ...state,
-        productCategory: action.payload.category,
+        activeFilter: action.payload.filter,
       };
     default:
       return state;

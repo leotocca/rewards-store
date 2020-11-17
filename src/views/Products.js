@@ -11,11 +11,11 @@ export const Products = () => {
   }, [dispatch]);
 
   const { products } = useSelector((state) => state.getProducts);
+  const { activeFilter } = useSelector((state) => state.filters);
 
-  console.log({ products });
   return (
     <div className="w-full flex justify-center">
-      <ProductList products={products} />
+      <ProductList products={products} filter={activeFilter} />
     </div>
   );
 };
