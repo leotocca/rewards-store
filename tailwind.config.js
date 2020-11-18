@@ -17,8 +17,13 @@ module.exports = {
       colors: {
         brand: "#0AD4FA",
       },
+      inset: {
+        0: 0,
+        auto: "auto",
+        "1/2": "50%",
+      },
     },
+    variants: {},
+    plugins: [],
   },
-  variants: {},
-  plugins: [],
 };

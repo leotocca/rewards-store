@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setActiveFilterAction } from "../../actions/filters";
+import { SearchBar } from "./SearchBar";
 
 export const Filters = () => {
   const [activeFilter, setActiveFilter] = useState("most-recent");
@@ -25,7 +26,7 @@ export const Filters = () => {
               activeFilter === "most-recent"
                 ? "bg-brand text-white"
                 : "bg-gray-200 text-gray-500"
-            } text-md text-center ml-5 px-3 py-1 rounded-full shadow hover:shadow-md transition-all duration-300 cursor-pointer select-none`}
+            } text-md text-center ml-5 px-3 py-1 rounded-3xl shadow hover:shadow-md transition-all duration-300 cursor-pointer select-none`}
             onClick={() => setActiveFilter("most-recent")}
           >
             Most Recent
@@ -35,7 +36,7 @@ export const Filters = () => {
               activeFilter === "lowest-price"
                 ? "bg-brand text-white"
                 : "bg-gray-200 text-gray-500"
-            } text-md text-center ml-5 px-3 py-1 rounded-full shadow hover:shadow-md transition-all duration-300 cursor-pointer select-none`}
+            } text-md text-center ml-5 px-3 py-1 rounded-3xl shadow hover:shadow-md transition-all duration-300 cursor-pointer select-none`}
             onClick={() => setActiveFilter("lowest-price")}
           >
             Lowest Price
@@ -45,18 +46,14 @@ export const Filters = () => {
               activeFilter === "highest-price"
                 ? "bg-brand text-white"
                 : "bg-gray-200 text-gray-500"
-            } text-md text-center ml-5 px-3 py-1 rounded-full shadow hover:shadow-md transition-all duration-300 cursor-pointer select-none`}
+            } text-md text-center ml-5 px-3 py-1 rounded-3xl shadow hover:shadow-md transition-all duration-300 cursor-pointer select-none`}
             onClick={() => setActiveFilter("highest-price")}
           >
             Highest Price
           </div>
         </div>
         <div className="flex items-center pr-2 py-2">
-          <input
-            type="text"
-            className="py-2 px-5 rounded-full focus:outline-none"
-            placeholder="Search product..."
-          />
+          <SearchBar />
         </div>
       </div>
     </div>

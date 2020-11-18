@@ -7,7 +7,6 @@ export const ProductList = (props) => {
 
   const sortedProducts = sortProducts(products, filter);
 
-  console.log({ sortedProducts });
   return (
     <div className="w-5/6 flex flex-wrap justify-around items-center py-8">
       {sortedProducts &&

@@ -1,4 +1,8 @@
-import { SET_SEARCH_KEYWORD, SET_ACTIVE_FILTER } from "../actions/filters";
+import {
+  SET_SEARCH_KEYWORD,
+  SET_ACTIVE_FILTER,
+  CLEAR_SEARCH_KEYWORD,
+} from "../actions/filters";
 
 const initialState = {
   activeFilter: undefined,
@@ -11,6 +15,11 @@ export const filters = (state = initialState, action) => {
       return {
         ...state,
         searchKeyword: action.payload.keyword,
+      };
+    case CLEAR_SEARCH_KEYWORD:
+      return {
+        ...state,
+        searchKeyword: undefined,
       };
     case SET_ACTIVE_FILTER:
       return {

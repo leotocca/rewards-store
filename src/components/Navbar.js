@@ -31,7 +31,7 @@ export const Navbar = () => {
 
       <div className="flex mr-8 items-center">
         <p className="text-gray-700 text-md mr-2 font-semibold">{name}</p>
-        <div className="bg-gray-300 flex items-center rounded-full py-1 px-3 select-none shadow hover:shadow-md transition-all duration-300">
+        <div className="bg-gray-300 flex items-center rounded-3xl py-1 px-3 select-none shadow hover:shadow-md transition-all duration-300">
           <p className="text-sm text-gray-700 mr-2">{points}</p>
           <img src={coin} alt="coin" className="h-3 w-3" />
         </div>
