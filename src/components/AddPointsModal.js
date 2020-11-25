@@ -1,11 +1,17 @@
 import React, { useState } from "react";
+import close from "../assets/svg/searchbar/close.svg";
 
 export const AddPointsModal = () => {
   const [activeAmount, setActiveAmount] = useState(1000);
 
   return (
     <div className="h-screen w-full bg-gray-800 bg-opacity-75 absolute top-0 right-0 z-50 flex items-center justify-center">
-      <div className="bg-white flex flex-col items-center justify-center p-12">
+      <div className="relative bg-white flex flex-col items-center justify-center p-20">
+        <img
+          src={close}
+          alt=""
+          className="absolute top-0 right-0 h-5 w-5 mt-5 mr-5 cursor-pointer"
+        />
         <h2 className="text-gray-800 text-2xl">
           How many points do we add to the account?
         </h2>
@@ -41,7 +47,7 @@ export const AddPointsModal = () => {
             7500
           </div>
         </div>
-        <div className="w-full flex justify-center mt-10">
+        <div className="w-full flex justify-center mt-12">
           <button className="border-brand border-2 bg-transparent text-brand rounded-3xl mx-auto py-1 px-5 w-1/2 text-lg font-semibold hover:bg-brand hover:text-white transition-all duration-300 shadow hover:shadow-lg focus:outline-none">
             Add Points
           </button>
