@@ -31,7 +31,7 @@ export const SearchBar = () => {
           onChange={(e) => setAndDispatchSearch(e.target.value)}
         />
         <div
-          className={`absolute top-1/2 right-0 h-3 w-3   ${
+          className={`absolute top-0 right-0 h-3 w-3 mt-4 mr-4 ${
             keyword !== "" ? "hidden" : ""
           }`}
         >

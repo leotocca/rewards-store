@@ -1,9 +1,7 @@
 import React from "react";
 // import { BrowserRouter as Router } from "react-router-dom";
-// import { Provider } from "react-redux";
 // import Routes from "./Routes";
-// import Navbar from "./components/Navbar";
-// import { Footer } from "./components/Footer";
+import { AddPointsModal } from "./components/AddPointsModal";
 import { Header } from "./components/Header";
 import { Navbar } from "./components/Navbar";
 import { Filters } from "./components/Filters/Filters";
@@ -21,6 +19,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <div className="w-full relative">
+        <AddPointsModal />
         <Navbar />
         <Header />
         <div className="w-full bg-gray-100 pt-20">
