@@ -29,7 +29,7 @@ export const Product = (props) => {
         </div>
       </div>
       <div className="single-product-description-overlay">
-        <div className="flex items-center">
+        <div className="flex items-center select-none">
           <p className="text-white text-2xl mr-3">{cost}</p>
           <img src={coin} alt="" className="h-5 w-5 mt-1" />
         </div>
