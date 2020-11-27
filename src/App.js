@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import { BrowserRouter as Router } from "react-router-dom";
 // import Routes from "./Routes";
 import { AddPointsModal } from "./components/AddPointsModal";
@@ -16,16 +16,25 @@ const logTheStore = () => console.log({ store: store.getState() });
 store.subscribe(logTheStore);
 
 export default function App() {
+  const [isModalActive, setIsModalActive] = useState(false);
+
   return (
     <Provider store={store}>
-      <div className="w-full relative">
-        <AddPointsModal />
-        <Navbar />
+      <div
+        className={`${
+          isModalActive ? "h-screen overflow-hidden" : "h-full"
+        } w-full relative`}
+      >
+        <Navbar setIsModalActive={setIsModalActive} />
         <Header />
         <div className="w-full bg-gray-100 pt-20">
           <Filters />
           <Products />
         </div>
+        <AddPointsModal
+          isModalActive={isModalActive}
+          setIsModalActive={setIsModalActive}
+        />
       </div>
     </Provider>
   );

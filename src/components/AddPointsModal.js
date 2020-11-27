@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import close from "../assets/svg/searchbar/close.svg";
 
-export const AddPointsModal = () => {
+export const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
   const [activeAmount, setActiveAmount] = useState(1000);
 
   return (
-    <div className="h-screen w-full bg-gray-800 bg-opacity-75 absolute top-0 right-0 z-50 flex items-center justify-center">
+    <div
+      className={`${
+        isModalActive ? "block" : "hidden"
+      } h-screen w-full bg-gray-800 bg-opacity-75 absolute top-0 right-0 z-50 flex items-center justify-center transition-all duration-150 op`}
+    >
       <div className="relative bg-white flex flex-col items-center justify-center p-20">
-        <img
-          src={close}
-          alt=""
+        <div
+          onClick={() => setIsModalActive(false)}
           className="absolute top-0 right-0 h-5 w-5 mt-5 mr-5 cursor-pointer"
-        />
+        >
+          <img src={close} alt="" className="h-5 w-5" />
+        </div>
         <h2 className="text-gray-800 text-2xl">
-          How many points do we add to the account?
+          How many points would you like to add?
         </h2>
         <div className="w-full flex items-center justify-around mt-8">
           <div

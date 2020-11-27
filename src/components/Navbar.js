@@ -4,7 +4,7 @@ import coin from "../assets/svg/navbar/coin.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserAPICall } from "../utilities/getUserAPICall";
 
-export const Navbar = () => {
+export const Navbar = ({ setIsModalActive }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,7 +21,10 @@ export const Navbar = () => {
       {/*TODO: Wire the methods for adding points and seeing history*/}
 
       <div className="flex items-center border-r border-gray-400 mr-8 pr-8 ">
-        <p className="text-gray-700 hover:text-brand text-md mr-6 font-semibold select-none cursor-pointer transition-all duration-150">
+        <p
+          onClick={() => setIsModalActive(true)}
+          className="text-gray-700 hover:text-brand text-md mr-6 font-semibold select-none cursor-pointer transition-all duration-150"
+        >
           Add points
         </p>
         <p className="text-gray-700 hover:text-brand text-md font-semibold select-none cursor-pointer transition-all duration-150">
