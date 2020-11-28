@@ -5,7 +5,7 @@ import {
 } from "../actions/addPoints";
 
 export function addPointsAPICall(points) {
-  if (typeof points !== Number) {
+  if (typeof points !== "number") {
     console.error("addPoints() can only receive a Number as a parameter");
   }
 

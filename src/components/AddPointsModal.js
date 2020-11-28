@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import close from "../assets/svg/searchbar/close.svg";
+import { addPointsAPICall } from "../utilities/addPointsAPICall";
 
 export const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
   const [activeAmount, setActiveAmount] = useState(1000);
@@ -53,7 +54,12 @@ export const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
           </div>
         </div>
         <div className="w-full flex justify-center mt-12">
-          <button className="border-brand border-2 bg-transparent text-brand rounded-3xl mx-auto py-1 px-5 w-1/2 text-lg font-semibold hover:bg-brand hover:text-white transition-all duration-300 shadow hover:shadow-lg focus:outline-none">
+          <button
+            onClick={() => {
+              addPointsAPICall(activeAmount);
+            }}
+            className="border-brand border-2 bg-transparent text-brand rounded-3xl mx-auto py-1 px-5 w-1/2 text-lg font-semibold hover:bg-brand hover:text-white transition-all duration-300 shadow hover:shadow-lg focus:outline-none"
+          >
             Add Points
           </button>
         </div>
