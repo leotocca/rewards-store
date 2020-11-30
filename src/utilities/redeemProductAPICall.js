@@ -16,6 +16,7 @@ export function redeemProductAPICall(productId) {
     dispatch(redeemProductBegin());
 
     try {
+      console.log({ productId });
       const { data } = await axios.post(
         "https://coding-challenge-api.aerolab.co/redeem",
         {

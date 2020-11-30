@@ -8,7 +8,7 @@ import "./Product.css";
 
 export const Product = (props) => {
   const { points } = useSelector((state) => state.getUser.userData);
-  const { name, cost, category, img, id } = props.product;
+  const { name, cost, category, img, _id: id } = props.product;
   const { url: imgUri } = img;
 
   const dispatch = useDispatch();
