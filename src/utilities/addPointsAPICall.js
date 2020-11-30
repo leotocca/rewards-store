@@ -20,7 +20,7 @@ export function addPointsAPICall(points) {
 
     try {
       const { data } = await axios.post(
-        "https://coding-challenge-api.aerolab.co/products",
+        "https://coding-challenge-api.aerolab.co/user/points",
         {
           amount: points,
         },
