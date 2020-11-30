@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import logo from "../assets/svg/navbar/logo.svg";
 import coin from "../assets/svg/navbar/coin.svg";
-import { useSelector, useDispatch } from "react-redux";
 import { getUserAPICall } from "../utilities/getUserAPICall";
 
 export const Navbar = ({ setIsModalActive }) => {
@@ -18,7 +18,7 @@ export const Navbar = ({ setIsModalActive }) => {
       <div className="flex-grow">
         <img src={logo} alt="" className="ml-8 h-6 w-6" />
       </div>
-      {/*TODO: Wire the methods for adding points and seeing history*/}
+      {/* TODO: Wire the methods for adding points and seeing history */}
 
       <div className="flex items-center border-r border-gray-400 mr-8 pr-8 ">
         <p

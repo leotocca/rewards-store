@@ -23,6 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 #tailwind build
-src/tailwind.output.cs
+src/tailwind.output.css
 
 .env
+
+.gitattributes

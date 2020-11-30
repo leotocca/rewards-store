@@ -3,9 +3,7 @@ import { Product } from "./Product/Product";
 import { sortProducts } from "../utilities/sortProducts";
 import { filterProducts } from "../utilities/filterProducts";
 
-export const ProductList = (props) => {
-  const { products, filter, searchKeyword } = props;
-
+export const ProductList = ({ products, filter, searchKeyword }) => {
   const filteredProducts = filterProducts(products, searchKeyword);
 
   const filteredAndSortedProducts = sortProducts(filteredProducts, filter);

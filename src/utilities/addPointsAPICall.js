@@ -1,31 +1,38 @@
+import axios from "axios";
 import {
   addPointsBegin,
   addPointsFailure,
   addPointsSuccess,
 } from "../actions/addPoints";
 
+const headerRequest = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+  Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
+};
+
 export function addPointsAPICall(points) {
   if (typeof points !== "number") {
     console.error("addPoints() can only receive a Number as a parameter");
   }
-
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(addPointsBegin());
 
-    fetch("https://coding-challenge-api.aerolab.co/user/me", {
-      method: "POST",
-      body: { amount: points },
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjg1YTM4ODJiNjU3MDAwMWZjZTZjNDgiLCJpYXQiOjE2MDI1OTM2NzJ9.gfWDJZ2ivAHboxrzGa4awAzf-UTVmDHSJNqIDb8Ahwk",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        dispatch(addPointsSuccess(response));
-      })
-      .catch((error) => dispatch(addPointsFailure(error)));
+    try {
+      const { data } = await axios.post(
+        "https://coding-challenge-api.aerolab.co/products",
+        {
+          amount: points,
+        },
+        {
+          headers: { ...headerRequest },
+        }
+      );
+
+      dispatch(addPointsSuccess(data));
+    } catch (error) {
+      console.error({ error });
+      dispatch(addPointsFailure(error));
+    }
   };
 }

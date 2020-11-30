@@ -1,26 +1,32 @@
+import axios from "axios";
 import {
   getProductsBegin,
   getProductsFailure,
   getProductsSuccess,
 } from "../actions/getProducts";
 
+const headerRequest = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+  Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
+};
+
 export function getProductsAPICall() {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(getProductsBegin());
 
-    fetch("https://coding-challenge-api.aerolab.co/products", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        // TODO: Setear correctamente el .env
-        Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjg1YTM4ODJiNjU3MDAwMWZjZTZjNDgiLCJpYXQiOjE2MDI1OTM2NzJ9.gfWDJZ2ivAHboxrzGa4awAzf-UTVmDHSJNqIDb8Ahwk",
-      },
-    })
-      .then((response) => response.json())
-      .then((products) => {
-        dispatch(getProductsSuccess(products));
-      })
-      .catch((error) => dispatch(getProductsFailure(error)));
+    try {
+      const { data: products } = await axios.get(
+        "https://coding-challenge-api.aerolab.co/products",
+        {
+          headers: { ...headerRequest },
+        }
+      );
+
+      dispatch(getProductsSuccess(products));
+    } catch (error) {
+      console.error({ error });
+      dispatch(getProductsFailure(error));
+    }
   };
 }

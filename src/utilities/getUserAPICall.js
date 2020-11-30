@@ -1,25 +1,32 @@
+import axios from "axios";
 import {
   getUserBegin,
   getUserFailure,
   getUserSuccess,
 } from "../actions/getUser";
 
+const headerRequest = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+  Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
+};
+
 export function getUserAPICall() {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(getUserBegin());
 
-    fetch("https://coding-challenge-api.aerolab.co/user/me", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjg1YTM4ODJiNjU3MDAwMWZjZTZjNDgiLCJpYXQiOjE2MDI1OTM2NzJ9.gfWDJZ2ivAHboxrzGa4awAzf-UTVmDHSJNqIDb8Ahwk",
-      },
-    })
-      .then((response) => response.json())
-      .then((products) => {
-        dispatch(getUserSuccess(products));
-      })
-      .catch((error) => dispatch(getUserFailure(error)));
+    try {
+      const { data: userData } = await axios.get(
+        "https://coding-challenge-api.aerolab.co/user/me",
+        {
+          headers: { ...headerRequest },
+        }
+      );
+
+      dispatch(getUserSuccess(userData));
+    } catch (error) {
+      console.error({ error });
+      dispatch(getUserFailure(error));
+    }
   };
 }

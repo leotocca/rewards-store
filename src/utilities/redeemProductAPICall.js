@@ -1,27 +1,34 @@
+import axios from "axios";
 import {
   redeemProductBegin,
   redeemProductFailure,
   redeemProductSuccess,
 } from "../actions/redeemProduct";
 
+const headerRequest = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+  Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
+};
+
 export function redeemProductAPICall(productId) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(redeemProductBegin());
 
-    fetch("https://coding-challenge-api.aerolab.co/redeem", {
-      method: "POST",
-      body: { productId },
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjg1YTM4ODJiNjU3MDAwMWZjZTZjNDgiLCJpYXQiOjE2MDI1OTM2NzJ9.gfWDJZ2ivAHboxrzGa4awAzf-UTVmDHSJNqIDb8Ahwk",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        dispatch(redeemProductSuccess(response));
-      })
-      .catch((error) => dispatch(redeemProductFailure(error)));
+    try {
+      const { data } = await axios.post(
+        "https://coding-challenge-api.aerolab.co/redeem",
+        {
+          productId,
+        },
+        {
+          headers: { ...headerRequest },
+        }
+      );
+      dispatch(redeemProductSuccess(data));
+    } catch (error) {
+      console.error({ error });
+      dispatch(redeemProductFailure(error));
+    }
   };
 }
