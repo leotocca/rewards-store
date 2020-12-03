@@ -8,13 +8,18 @@ export const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
 
   const dispatch = useDispatch();
 
+  const dispatchAddPoints = () => {
+    dispatch(addPointsAPICall(activeAmount));
+    setIsModalActive(false);
+  };
+
   return (
     <div
       className={`${
         isModalActive ? "block" : "hidden"
       } h-screen w-full bg-gray-800 bg-opacity-75 absolute top-0 right-0 z-50 flex items-center justify-center transition-all duration-150 op`}
     >
-      <div className="relative bg-white flex flex-col items-center justify-center p-20">
+      <div className="relative bg-white flex flex-col items-center justify-center p-20 ">
         <div
           onClick={() => setIsModalActive(false)}
           className="absolute top-0 right-0 h-5 w-5 mt-5 mr-5 cursor-pointer"
@@ -58,7 +63,7 @@ export const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
         </div>
         <div className="w-full flex justify-center mt-12">
           <button
-            onClick={() => dispatch(addPointsAPICall(activeAmount))}
+            onClick={() => dispatchAddPoints()}
             className="border-brand border-2 bg-transparent text-brand rounded-3xl mx-auto py-1 px-5 w-1/2 text-lg font-semibold hover:bg-brand hover:text-white transition-all duration-300 shadow hover:shadow-lg focus:outline-none"
           >
             Add Points

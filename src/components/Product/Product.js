@@ -18,7 +18,7 @@ export const Product = (props) => {
   return (
     <div className="single-product">
       {isAvailable && <ShoppingBag />}
-      {!isAvailable && <MissingPoints points={points - cost} />}
+      {!isAvailable && <MissingPoints points={Math.abs(points - cost)} />}
       <div className="mx-5 mt-6 mb-4">
         <div className="pb-4">
           <img src={imgUri} alt={name} />

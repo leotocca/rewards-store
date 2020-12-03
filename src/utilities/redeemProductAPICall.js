@@ -4,6 +4,7 @@ import {
   redeemProductFailure,
   redeemProductSuccess,
 } from "../actions/redeemProduct";
+import { getUserAPICall } from "./getUserAPICall";
 
 const headerRequest = {
   "Content-Type": "application/json",
@@ -27,6 +28,7 @@ export function redeemProductAPICall(productId) {
         }
       );
       dispatch(redeemProductSuccess(data));
+      dispatch(getUserAPICall());
     } catch (error) {
       console.error({ error });
       dispatch(redeemProductFailure(error));

@@ -4,6 +4,7 @@ import {
   addPointsFailure,
   addPointsSuccess,
 } from "../actions/addPoints";
+import { getUserAPICall } from "./getUserAPICall";
 
 const headerRequest = {
   "Content-Type": "application/json",
@@ -30,6 +31,7 @@ export function addPointsAPICall(points) {
       );
 
       dispatch(addPointsSuccess(data));
+      dispatch(getUserAPICall());
     } catch (error) {
       console.error({ error });
       dispatch(addPointsFailure(error));
