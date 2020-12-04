@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { BrowserRouter as Router } from "react-router-dom";
 // import Routes from "./Routes";
-import { AddPointsModal } from "./components/AddPointsModal";
+import { AddPointsModal } from "./components/AddPointsModal/AddPointsModal";
 import { Header } from "./components/Header";
 import { Navbar } from "./components/Navbar";
 import { Filters } from "./components/Filters/Filters";
