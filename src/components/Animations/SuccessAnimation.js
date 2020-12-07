@@ -4,7 +4,7 @@ import successAnimation from "../../lotties/success-animation.json";
 import { addPointsResetSuccess } from "../../actions/addPoints";
 import { useDispatch } from "react-redux";
 
-export const AddPointsSuccessAnimation = ({ render, setIsModalActive }) => {
+export const SuccessAnimation = ({ render, setIsModalActive }) => {
   const dispatch = useDispatch();
 
   const defaultOptions = {
@@ -16,13 +16,13 @@ export const AddPointsSuccessAnimation = ({ render, setIsModalActive }) => {
     },
   };
 
-  const resetSuccessAndCloseModal = () => {
+  const resetAddPointsSuccessAndCloseModal = () => {
     dispatch(addPointsResetSuccess());
     setIsModalActive(false);
   };
 
   if (render) {
-    setTimeout(resetSuccessAndCloseModal, 1500);
+    setTimeout(resetAddPointsSuccessAndCloseModal, 1500);
   }
 
   return (

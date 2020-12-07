@@ -4,7 +4,7 @@ import errorAnimation from "../../lotties/error-animation.json";
 import { addPointsResetError } from "../../actions/addPoints";
 import { useDispatch } from "react-redux";
 
-export const AddPointsErrorAnimation = ({ render, setIsModalActive }) => {
+export const ErrorAnimation = ({ render, setIsModalActive }) => {
   const dispatch = useDispatch();
 
   const defaultOptions = {
@@ -16,13 +16,13 @@ export const AddPointsErrorAnimation = ({ render, setIsModalActive }) => {
     },
   };
 
-  const resetErrorAndCloseModal = () => {
+  const resetAddPointsErrorAndCloseModal = () => {
     dispatch(addPointsResetError());
     setIsModalActive(false);
   };
 
   if (render) {
-    setTimeout(resetErrorAndCloseModal, 1500);
+    setTimeout(resetAddPointsErrorAndCloseModal, 1500);
   }
 
   return (

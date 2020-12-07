@@ -10,7 +10,6 @@ export const addPointsBegin = () => ({
 
 export const addPointsSuccess = () => ({
   type: ADD_POINTS_SUCCESS,
-  payload: true,
 });
 
 export const addPointsFailure = (error) => ({
@@ -20,10 +19,8 @@ export const addPointsFailure = (error) => ({
 
 export const addPointsResetSuccess = () => ({
   type: ADD_POINTS_RESET_SUCCESS,
-  payload: false,
 });
 
 export const addPointsResetError = () => ({
   type: ADD_POINTS_RESET_SUCCESS,
-  payload: false,
 });

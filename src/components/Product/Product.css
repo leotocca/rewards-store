@@ -26,12 +26,12 @@
   transition: all;
   transition-duration: 400ms;
   border-radius: 5px;
-  /* margin: 3px; */
   z-index: 1;
   background-color: rgba(10, 212, 250, 0.9);
 }
 
-.single-product:hover .single-product-description-overlay {
+.single-product:hover .single-product-description-overlay,
+.single-product-is-redeeming .single-product-description-overlay {
   top: 0;
   opacity: 1;
 }

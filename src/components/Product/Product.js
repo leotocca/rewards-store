@@ -1,19 +1,31 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { redeemProductAPICall } from "../../utilities/redeemProductAPICall";
+import { redeemProductResetSuccess } from "../../actions/redeemProduct";
 import coin from "../../assets/svg/navbar/coin.svg";
 import { ShoppingBag } from "./ShoppingBag";
 import { MissingPoints } from "./MissingPoints";
+import { SuccessAnimation } from "../Animations/SuccessAnimation";
+import { LoadingAnimation } from "../Animations/LoadingAnimation";
+import { ErrorAnimation } from "../Animations/ErrorAnimation";
 import "./Product.css";
 
-export const Product = (props) => {
+export const Product = ({ product }) => {
   const { points } = useSelector((state) => state.getUser.userData);
-  const { name, cost, category, img, _id: id } = props.product;
+  const { loading, error, success } = useSelector(
+    (state) => state.redeemProduct
+  );
+  const { name, cost, category, img, _id: id } = product;
   const { url: imgUri } = img;
 
   const dispatch = useDispatch();
 
   const isAvailable = points - cost >= 0;
+
+  const redeemProduct = (id) => {
+    dispatch(redeemProductAPICall(id));
+    setTimeout(() => dispatch(redeemProductResetSuccess()), 3000);
+  };
 
   return (
     <div className="single-product">
@@ -25,20 +37,27 @@ export const Product = (props) => {
         </div>
         <div className="pt-4 border-t border-gray-300">
           <p className="text-sm text-gray-500 ">{category}</p>
-          <h3 className="text-lg text-gray-800 ">{name}</h3>
+          <h3 className="text-lg text-brandblack ">{name}</h3>
         </div>
       </div>
       <div className="single-product-description-overlay">
-        <div className="flex items-center select-none">
-          <p className="text-white text-2xl mr-3">{cost}</p>
-          <img src={coin} alt="" className="h-5 w-5 mt-1" />
-        </div>
-        <button
-          className="w-3/4 bg-white text-lg text-gray-800 text-center rounded-full shadow cursor-pointer select-none py-2 mt-4 hover:shadow-lg transition-all duration-300 focus:outline-none active:outline-none"
-          onClick={() => dispatch(redeemProductAPICall(id))}
-        >
-          Redeem Now
-        </button>
+        {!success && !loading && !error && (
+          <div className="w-full h-full flex flex-col items-center justify-center">
+            <div className="flex items-center select-none">
+              <p className="text-brandwhite text-2xl mr-3">{cost}</p>
+              <img src={coin} alt="" className="h-5 w-5 mt-1" />
+            </div>
+            <button
+              className="w-3/4 bg-brandwhite text-lg text-brandblack text-center rounded-full shadow cursor-pointer select-none py-2 mt-4 hover:shadow-lg transition-all duration-300 focus:outline-none active:outline-none"
+              onClick={() => redeemProduct(id)}
+            >
+              Redeem Now
+            </button>
+          </div>
+        )}
+        {success && <SuccessAnimation />}
+        {loading && <LoadingAnimation />}
+        {error && <ErrorAnimation />}
       </div>
     </div>
   );

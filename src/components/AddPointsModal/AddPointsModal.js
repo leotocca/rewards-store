@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { AddPointsForm } from "./AddPointsForm";
-import { LoadingAnimation } from "../LoadingAnimation";
-import { AddPointsErrorAnimation } from "./AddPointsErrorAnimation";
-import { AddPointsSuccessAnimation } from "./AddPointsSuccessAnimation";
+import { LoadingAnimation } from "../Animations/LoadingAnimation";
+import { ErrorAnimation } from "../Animations/ErrorAnimation";
+import { SuccessAnimation } from "../Animations/SuccessAnimation";
 import { useKeyPress } from "../../utilities/useKeyPress";
 import "./AddPointsModal.css";
 
@@ -40,16 +40,13 @@ export const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
         {!loading && !error && !success && <AddPointsForm />}
         {loading && <LoadingAnimation />}
         {success && (
-          <AddPointsSuccessAnimation
+          <SuccessAnimation
             render={success}
             setIsModalActive={setIsModalActive}
           />
         )}
         {error && (
-          <AddPointsErrorAnimation
-            render={error}
-            setIsModalActive={setIsModalActive}
-          />
+          <ErrorAnimation render={error} setIsModalActive={setIsModalActive} />
         )}
       </div>
     </div>
