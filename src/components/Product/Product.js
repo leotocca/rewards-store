@@ -11,14 +11,15 @@ import { ErrorAnimation } from "../Animations/ErrorAnimation";
 import "./Product.css";
 
 export const Product = ({ product }) => {
+  const { name, cost, category, img, _id: id } = product;
+  const { url: imgUri } = img;
+
   const [isBeingRedeemed, setIsBeingRedeemed] = useState(false);
 
   const { points } = useSelector((state) => state.getUser.userData);
   const { loading, error, success } = useSelector(
     (state) => state.redeemProduct
   );
-  const { name, cost, category, img, _id: id } = product;
-  const { url: imgUri } = img;
 
   const dispatch = useDispatch();
 
@@ -27,6 +28,11 @@ export const Product = ({ product }) => {
   const redeemProduct = (id) => {
     dispatch(redeemProductAPICall(id));
     setIsBeingRedeemed(true);
+
+    resetRedeeming();
+  };
+
+  const resetRedeeming = () => {
     setTimeout(() => {
       dispatch(redeemProductResetSuccess());
       setIsBeingRedeemed(false);
