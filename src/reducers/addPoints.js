@@ -24,7 +24,7 @@ export const addPoints = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        success: action.payload,
+        success: true,
       };
     case ADD_POINTS_FAILURE:
       return {
