@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { redeemProductAPICall } from "../../utilities/redeemProductAPICall";
 import { redeemProductResetSuccess } from "../../actions/redeemProduct";
@@ -11,6 +11,8 @@ import { ErrorAnimation } from "../Animations/ErrorAnimation";
 import "./Product.css";
 
 export const Product = ({ product }) => {
+  const [isBeingRedeemed, setIsBeingRedeemed] = useState(false);
+
   const { points } = useSelector((state) => state.getUser.userData);
   const { loading, error, success } = useSelector(
     (state) => state.redeemProduct
@@ -24,7 +26,11 @@ export const Product = ({ product }) => {
 
   const redeemProduct = (id) => {
     dispatch(redeemProductAPICall(id));
-    setTimeout(() => dispatch(redeemProductResetSuccess()), 3000);
+    setIsBeingRedeemed(true);
+    setTimeout(() => {
+      dispatch(redeemProductResetSuccess());
+      setIsBeingRedeemed(false);
+    }, 3000);
   };
 
   return (
@@ -41,7 +47,7 @@ export const Product = ({ product }) => {
         </div>
       </div>
       <div className="single-product-description-overlay">
-        {!success && !loading && !error && (
+        {!isBeingRedeemed && (
           <div className="w-full h-full flex flex-col items-center justify-center">
             <div className="flex items-center select-none">
               <p className="text-brandwhite text-2xl mr-3">{cost}</p>
@@ -55,9 +61,9 @@ export const Product = ({ product }) => {
             </button>
           </div>
         )}
-        {success && <SuccessAnimation />}
-        {loading && <LoadingAnimation />}
-        {error && <ErrorAnimation />}
+        {success && isBeingRedeemed && <SuccessAnimation />}
+        {loading && isBeingRedeemed && <LoadingAnimation />}
+        {error && isBeingRedeemed && <ErrorAnimation />}
       </div>
     </div>
   );
