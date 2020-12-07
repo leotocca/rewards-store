@@ -13,8 +13,8 @@ export const LoadingAnimation = () => {
   };
 
   return (
-    <div className="w-full h-full">
-      <Lottie options={defaultOptions} height={400} width={400} />
+    <div className="w-full h-full flex justify-center items-center">
+      <Lottie options={defaultOptions} height={200} width={200} />
     </div>
   );
 };

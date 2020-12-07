@@ -9,9 +9,10 @@ export const AddPointsForm = () => {
   const dispatchAddPoints = () => {
     dispatch(addPointsAPICall(activeAmount));
   };
+
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      <h2 className="text-gray-800 text-2xl">
+      <h2 className="text-brandblack text-2xl">
         How many points would you like to add?
       </h2>
       <div className="w-full flex items-center justify-around mt-8">

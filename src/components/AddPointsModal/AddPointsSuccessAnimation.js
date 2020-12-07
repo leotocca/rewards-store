@@ -16,18 +16,18 @@ export const AddPointsSuccessAnimation = ({ render, setIsModalActive }) => {
     },
   };
 
-  const resetSuccess = () => {
+  const resetSuccessAndCloseModal = () => {
     dispatch(addPointsResetSuccess());
     setIsModalActive(false);
   };
 
   if (render) {
-    setTimeout(resetSuccess, 2500);
+    setTimeout(resetSuccessAndCloseModal, 1500);
   }
 
   return (
-    <div className="w-full h-full">
-      <Lottie options={defaultOptions} height={400} width={400} />
+    <div className="w-full h-full flex justify-center items-center">
+      <Lottie options={defaultOptions} height={200} width={200} />
     </div>
   );
 };

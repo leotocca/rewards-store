@@ -4,3 +4,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.add-points-modal-dimensions {
+  height: 350px;
+  width: 600px;
+}

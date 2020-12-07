@@ -3,6 +3,7 @@ import {
   ADD_POINTS_FAILURE,
   ADD_POINTS_SUCCESS,
   ADD_POINTS_RESET_SUCCESS,
+  ADD_POINTS_RESET_ERROR,
 } from "../actions/addPoints";
 
 const initialState = {
@@ -32,6 +33,13 @@ export const addPoints = (state = initialState, action) => {
         error: action.payload.error,
       };
     case ADD_POINTS_RESET_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        success: false,
+      };
+    case ADD_POINTS_RESET_ERROR:
       return {
         ...state,
         loading: false,

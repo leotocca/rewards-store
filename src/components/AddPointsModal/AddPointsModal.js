@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { AddPointsForm } from "./AddPointsForm";
 import { LoadingAnimation } from "../LoadingAnimation";
+import { AddPointsErrorAnimation } from "./AddPointsErrorAnimation";
 import { AddPointsSuccessAnimation } from "./AddPointsSuccessAnimation";
 import { useKeyPress } from "../../utilities/useKeyPress";
 import "./AddPointsModal.css";
@@ -28,11 +29,11 @@ export const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
       <div
         className={`${
           isModalActive ? "block" : "hidden"
-        } center-add-points-modal mx-auto bg-white flex flex-col items-center justify-center p-20 z-20`}
+        } center-add-points-modal add-points-modal-dimensions px-20 bg-white flex flex-col items-center justify-center rounded-lg shadow-md z-20`}
       >
         <div
           onClick={() => setIsModalActive(false)}
-          className="absolute top-0 right-0 h-5 w-5 mt-5 mr-5 cursor-pointer"
+          className="absolute top-0 right-0 h-5 w-5 mt-6 mr-6 cursor-pointer"
         >
           <img src={close} alt="" className="h-5 w-5" />
         </div>
@@ -41,6 +42,12 @@ export const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
         {success && (
           <AddPointsSuccessAnimation
             render={success}
+            setIsModalActive={setIsModalActive}
+          />
+        )}
+        {error && (
+          <AddPointsErrorAnimation
+            render={error}
             setIsModalActive={setIsModalActive}
           />
         )}
