@@ -8,6 +8,7 @@ import { Filters } from "./components/Filters/Filters";
 import { Provider } from "react-redux";
 import storeFactory from "./store";
 import { Products } from "./views/Products";
+import "./index.css";
 
 const store = storeFactory();
 

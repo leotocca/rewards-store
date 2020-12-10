@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../assets/svg/navbar/logo.svg";
 import coin from "../assets/svg/navbar/coin.svg";
 import { getUserAPICall } from "../utilities/getUserAPICall";
 
-export const Navbar = ({ setIsModalActive }) => {
+const Navbar = ({ setIsModalActive }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,3 +43,9 @@ export const Navbar = ({ setIsModalActive }) => {
     </div>
   );
 };
+
+Navbar.propTypes = {
+  setIsModalActive: PropTypes.func,
+};
+
+export { Navbar };

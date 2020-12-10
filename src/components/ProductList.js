@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Product } from "./Product/Product";
 import { sortProducts } from "../utilities/sortProducts";
 import { filterProducts } from "../utilities/filterProducts";
 
-export const ProductList = ({ products, filter, searchKeyword }) => {
+const ProductList = ({ products, filter, searchKeyword }) => {
   const filteredProducts = filterProducts(products, searchKeyword);
 
   const filteredAndSortedProducts = sortProducts(filteredProducts, filter);
@@ -17,3 +18,10 @@ export const ProductList = ({ products, filter, searchKeyword }) => {
     </div>
   );
 };
+ProductList.propTypes = {
+  products: PropTypes.array,
+  filter: PropTypes.string,
+  searchKeyword: PropTypes.string,
+};
+
+export { ProductList };

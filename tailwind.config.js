@@ -1,17 +1,6 @@
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-    defaultLineHeights: true,
-    standardFontWeights: true,
-  },
-  purge: [
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "public/**/*.html",
-  ],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -21,13 +10,10 @@ module.exports = {
         brandgreen: "#9FCC2E",
         brandred: "#D64550",
       },
-      inset: {
-        0: 0,
-        auto: "auto",
-        "1/2": "50%",
-      },
     },
-    variants: {},
-    plugins: [],
   },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
 };

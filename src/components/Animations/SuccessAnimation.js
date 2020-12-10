@@ -1,10 +1,11 @@
 import React from "react";
 import Lottie from "react-lottie";
+import PropTypes from "prop-types";
 import successAnimation from "../../lotties/success-animation.json";
 import { addPointsResetSuccess } from "../../actions/addPoints";
 import { useDispatch } from "react-redux";
 
-export const SuccessAnimation = ({ render, setIsModalActive }) => {
+const SuccessAnimation = ({ isRendering, setIsModalActive }) => {
   const dispatch = useDispatch();
 
   const defaultOptions = {
@@ -21,7 +22,7 @@ export const SuccessAnimation = ({ render, setIsModalActive }) => {
     setIsModalActive(false);
   };
 
-  if (render) {
+  if (isRendering) {
     setTimeout(resetAddPointsSuccessAndCloseModal, 1500);
   }
 
@@ -31,3 +32,10 @@ export const SuccessAnimation = ({ render, setIsModalActive }) => {
     </div>
   );
 };
+
+SuccessAnimation.propTypes = {
+  isRendering: PropTypes.bool,
+  setIsModalActive: PropTypes.func,
+};
+
+export { SuccessAnimation };
