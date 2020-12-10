@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { AddPointsForm } from "./AddPointsForm";
 import { LoadingAnimation } from "../Animations/LoadingAnimation";
@@ -6,10 +7,9 @@ import { ErrorAnimation } from "../Animations/ErrorAnimation";
 import { SuccessAnimation } from "../Animations/SuccessAnimation";
 import { useKeyPress } from "../../utilities/useKeyPress";
 import "./AddPointsModal.css";
-
 import close from "../../assets/svg/searchbar/close.svg";
 
-export const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
+const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
   const { loading, error, success } = useSelector((state) => state.addPoints);
 
   const pressedEscape = useKeyPress("Escape");
@@ -41,14 +41,24 @@ export const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
         {loading && <LoadingAnimation />}
         {success && (
           <SuccessAnimation
-            render={success}
+            isRendering={success}
             setIsModalActive={setIsModalActive}
           />
         )}
         {error && (
-          <ErrorAnimation render={error} setIsModalActive={setIsModalActive} />
+          <ErrorAnimation
+            isRendering={error}
+            setIsModalActive={setIsModalActive}
+          />
         )}
       </div>
     </div>
   );
 };
+
+AddPointsModal.propTypes = {
+  isModalActive: PropTypes.bool,
+  setIsModalActive: PropTypes.func,
+};
+
+export { AddPointsModal };

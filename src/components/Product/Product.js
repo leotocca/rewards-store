@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { redeemProductAPICall } from "../../utilities/redeemProductAPICall";
 import { redeemProductResetSuccess } from "../../actions/redeemProduct";
@@ -10,7 +11,7 @@ import { LoadingAnimation } from "../Animations/LoadingAnimation";
 import { ErrorAnimation } from "../Animations/ErrorAnimation";
 import "./Product.css";
 
-export const Product = ({ product }) => {
+const Product = ({ product }) => {
   const { name, cost, category, img, _id: id } = product;
   const { url: imgUri } = img;
 
@@ -74,3 +75,9 @@ export const Product = ({ product }) => {
     </div>
   );
 };
+
+Product.propTypes = {
+  product: PropTypes.object,
+};
+
+export { Product };
