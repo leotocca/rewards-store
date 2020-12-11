@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function usePagination(data, itemsPerPage) {
   const [currentPage, setCurrentPage] = useState(1);
+  console.log({ data });
   const maxPage = Math.ceil(data.length / itemsPerPage);
   function currentData() {
     const begin = (currentPage - 1) * itemsPerPage;
@@ -25,4 +26,4 @@ function usePagination(data, itemsPerPage) {
   return { next, prev, jump, currentData, currentPage, maxPage };
 }
 
-export default usePagination;
+export { usePagination };
