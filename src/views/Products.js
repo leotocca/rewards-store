@@ -6,6 +6,7 @@ import { Pagination } from "../components/Pagination";
 import { usePagination } from "../utilities/usePagination";
 import { sortProducts } from "../utilities/sortProducts";
 import { filterProducts } from "../utilities/filterProducts";
+import { LoadingAnimation } from "../components/Animations/LoadingAnimation";
 
 export const Products = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ export const Products = () => {
     activeFilter
   );
 
-  // const paginatedProducts = usePagination(filteredAndSortedProducts, 16);
+  const paginatedProducts = usePagination(filteredAndSortedProducts, 16);
 
   const handlePaginationChange = (request) => {
     if (typeof request === "number") paginatedProducts.jump(request);
@@ -32,11 +33,21 @@ export const Products = () => {
     if (request === "next") paginatedProducts.next();
   };
 
-  // <ProductList products={paginatedProducts.currentData()} />
+  console.log({ data: paginatedProducts });
   return (
     <div className="w-full flex flex-col items-center justify-center pb-20">
-      <ProductList products={products} />
-      <Pagination handleChange={handlePaginationChange} />
+      {paginatedProducts.currentData().length === 0 && (
+        <div className="w-full h-full flex items-center justify-center py-32 ">
+          <LoadingAnimation />
+        </div>
+      )}
+      {paginatedProducts.currentData().length !== 0 && (
+        <ProductList products={paginatedProducts.currentData()} />
+      )}
+      {paginatedProducts.currentData().length !== 0 &&
+        paginatedProducts.maxPage !== 1 && (
+          <Pagination handleChange={handlePaginationChange} />
+        )}
     </div>
   );
 };

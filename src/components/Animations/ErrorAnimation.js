@@ -5,7 +5,11 @@ import errorAnimation from "../../lotties/error-animation.json";
 import { addPointsResetError } from "../../actions/addPoints";
 import { useDispatch } from "react-redux";
 
-const ErrorAnimation = ({ isRendering, setIsModalActive }) => {
+const ErrorAnimation = ({
+  isRendering,
+  setIsModalActive,
+  shouldShowErrorMessage,
+}) => {
   const dispatch = useDispatch();
 
   const defaultOptions = {
@@ -29,11 +33,11 @@ const ErrorAnimation = ({ isRendering, setIsModalActive }) => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div
-        className={`h-content w-content ${setIsModalActive ? -mt - 10 : ""} `}
+        className={`h-content w-content ${setIsModalActive ? "-mt - 10" : ""} `}
       >
         <Lottie options={defaultOptions} height={220} width={300} />
       </div>
-      {setIsModalActive && (
+      {shouldShowErrorMessage && (
         <p className="text-brandred text-xl -mt-4">
           We couldnt add points to your account
         </p>
@@ -45,6 +49,7 @@ const ErrorAnimation = ({ isRendering, setIsModalActive }) => {
 ErrorAnimation.propTypes = {
   isRendering: PropTypes.bool,
   setIsModalActive: PropTypes.func,
+  shouldShowErrorMessage: PropTypes.bool,
 };
 
 export { ErrorAnimation };

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addPointsAPICall } from "../../utilities/addPointsAPICall";
 
 export const AddPointsForm = () => {
-  const [activeAmount, setActiveAmount] = useState(1000);
+  const [activeAmount, setActiveAmount] = useState(4000);
   const dispatch = useDispatch();
 
   const dispatchAddPoints = () => {

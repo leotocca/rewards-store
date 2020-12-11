@@ -49,6 +49,7 @@ const AddPointsModal = ({ isModalActive, setIsModalActive }) => {
           <ErrorAnimation
             isRendering={error}
             setIsModalActive={setIsModalActive}
+            shouldShowErrorMessage={true}
           />
         )}
       </div>
