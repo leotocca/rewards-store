@@ -15,7 +15,7 @@ const Navbar = ({ setIsModalActive }) => {
   const { userData } = useSelector((state) => state.getUser);
   const { name, points } = userData;
   return (
-    <div className="w-full flex py-3 sticky top-0 bg-white z-10 shadow">
+    <nav className="w-full flex py-3 sticky top-0 bg-white z-50 shadow">
       <div className="flex-grow">
         <img src={logo} alt="" className="ml-8 h-6 w-6" />
       </div>
@@ -40,7 +40,7 @@ const Navbar = ({ setIsModalActive }) => {
           <img src={coin} alt="coin" className="h-3 w-3" />
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
