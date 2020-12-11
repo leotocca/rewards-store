@@ -46,7 +46,10 @@ export const Products = () => {
       )}
       {paginatedProducts.currentData().length !== 0 &&
         paginatedProducts.maxPage !== 1 && (
-          <Pagination handleChange={handlePaginationChange} />
+          <Pagination
+            handleChange={handlePaginationChange}
+            currentPage={paginatedProducts.currentPage}
+          />
         )}
     </div>
   );
