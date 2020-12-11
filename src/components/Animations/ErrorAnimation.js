@@ -28,12 +28,16 @@ const ErrorAnimation = ({ isRendering, setIsModalActive }) => {
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <div className="h-content w-content -mt-10">
+      <div
+        className={`h-content w-content ${setIsModalActive ? -mt - 10 : ""} `}
+      >
         <Lottie options={defaultOptions} height={220} width={300} />
       </div>
-      <p className="text-brandred text-xl -mt-4">
-        We couldn&apost add points to your account
-      </p>
+      {setIsModalActive && (
+        <p className="text-brandred text-xl -mt-4">
+          We couldnt add points to your account
+        </p>
+      )}
     </div>
   );
 };
