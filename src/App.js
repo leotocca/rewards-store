@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-// import { BrowserRouter as Router } from "react-router-dom";
-// import Routes from "./Routes";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "./Routes";
 import { AddPointsModal } from "./components/AddPointsModal/AddPointsModal";
-import { Header } from "./components/Header";
 import { Navbar } from "./components/Navbar";
-import { Filters } from "./components/Filters/Filters";
 import { Provider } from "react-redux";
 import storeFactory from "./store";
-import { Products } from "./views/Products";
 import "./index.css";
 
 const store = storeFactory();
@@ -21,22 +18,20 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <div
-        className={`${
-          isModalActive ? "h-screen overflow-hidden" : "h-full"
-        } w-full relative`}
-      >
-        <Navbar setIsModalActive={setIsModalActive} />
-        <Header />
-        <div className="w-full bg-gray-100 pt-20">
-          <Filters />
-          <Products />
+      <Router>
+        <div
+          className={`${
+            isModalActive ? "h-screen overflow-hidden" : "h-full"
+          } w-full relative`}
+        >
+          <Navbar setIsModalActive={setIsModalActive} />
+          <Routes />
+          <AddPointsModal
+            isModalActive={isModalActive}
+            setIsModalActive={setIsModalActive}
+          />
         </div>
-        <AddPointsModal
-          isModalActive={isModalActive}
-          setIsModalActive={setIsModalActive}
-        />
-      </div>
+      </Router>
     </Provider>
   );
 }

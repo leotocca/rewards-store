@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductsAPICall } from "../utilities/getProductsAPICall";
 import { ProductList } from "../components/ProductList";
+import { Filters } from "../components/Filters/Filters";
+import { Header } from "../components/Header";
 import { Pagination } from "../components/Pagination";
 import { usePagination } from "../utilities/usePagination";
 import { sortProducts } from "../utilities/sortProducts";
@@ -35,22 +37,28 @@ export const Products = () => {
 
   console.log({ data: paginatedProducts });
   return (
-    <div className="w-full flex flex-col items-center justify-center pb-20">
-      {paginatedProducts.currentData().length === 0 && (
-        <div className="w-full h-full flex items-center justify-center py-32 ">
-          <LoadingAnimation />
+    <div className="w-full h-full">
+      <Header />
+      <div className="w-full bg-gray-100 pt-20">
+        <Filters />
+        <div className="w-full flex flex-col items-center justify-center pb-20">
+          {paginatedProducts.currentData().length === 0 && (
+            <div className="w-full h-full flex items-center justify-center py-32 ">
+              <LoadingAnimation />
+            </div>
+          )}
+          {paginatedProducts.currentData().length !== 0 && (
+            <ProductList products={paginatedProducts.currentData()} />
+          )}
+          {paginatedProducts.currentData().length !== 0 &&
+            paginatedProducts.maxPage !== 1 && (
+              <Pagination
+                handleChange={handlePaginationChange}
+                currentPage={paginatedProducts.currentPage}
+              />
+            )}
         </div>
-      )}
-      {paginatedProducts.currentData().length !== 0 && (
-        <ProductList products={paginatedProducts.currentData()} />
-      )}
-      {paginatedProducts.currentData().length !== 0 &&
-        paginatedProducts.maxPage !== 1 && (
-          <Pagination
-            handleChange={handlePaginationChange}
-            currentPage={paginatedProducts.currentPage}
-          />
-        )}
+      </div>
     </div>
   );
 };

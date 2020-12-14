@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../assets/svg/navbar/logo.svg";
 import coin from "../assets/svg/navbar/coin.svg";
@@ -12,24 +13,39 @@ const Navbar = ({ setIsModalActive }) => {
     dispatch(getUserAPICall());
   }, [dispatch]);
 
+  const currentLocation = useLocation();
+
   const { userData } = useSelector((state) => state.getUser);
   const { name, points } = userData;
   return (
     <nav className="w-full flex py-3 sticky top-0 bg-white z-50 shadow">
-      <div className="flex-grow">
-        <img src={logo} alt="" className="ml-8 h-6 w-6" />
-      </div>
-      {/* TODO: Wire the methods for adding points and seeing history */}
+      <div className="flex items-center flex-grow">
+        <Link to="/" className="ml-8">
+          <img src={logo} alt="" className="h-6 w-6" />
+        </Link>
+        <div className="flex items-center border-l border-gray-400 ml-6 pl-6">
+          <Link
+            to="/"
+            className="text-gray-700 hover:text-brand text-md font-semibold select-none cursor-pointer transition-all duration-150"
+          >
+            Home
+          </Link>
 
-      <div className="flex items-center border-r border-gray-400 mr-8 pr-8 ">
+          <Link
+            to="/history"
+            className="text-gray-700 hover:text-brand text-md font-semibold select-none cursor-pointer ml-4 transition-all duration-150"
+          >
+            History
+          </Link>
+        </div>
+      </div>
+
+      <div className="flex items-center border-r border-gray-400 mr-6 pr-6">
         <p
           onClick={() => setIsModalActive(true)}
-          className="text-gray-700 hover:text-brand text-md mr-6 font-semibold select-none cursor-pointer transition-all duration-150"
+          className="text-gray-700 hover:text-brand text-md font-semibold select-none cursor-pointer transition-all duration-150"
         >
           Add points
-        </p>
-        <p className="text-gray-700 hover:text-brand text-md font-semibold select-none cursor-pointer transition-all duration-150">
-          History
         </p>
       </div>
 
