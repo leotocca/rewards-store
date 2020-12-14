@@ -1,4 +1,4 @@
-export const filterProducts = (products, searchKeyword) => {
+export const filterProducts = (products = [], searchKeyword) => {
   return products.filter((product) => {
     return searchKeyword === undefined
       ? true

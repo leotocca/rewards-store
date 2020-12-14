@@ -17,7 +17,7 @@ export const Products = () => {
     dispatch(getProductsAPICall());
   }, [dispatch]);
 
-  const { products } = useSelector((state) => state.getProducts);
+  const { products = [] } = useSelector((state) => state.getProducts);
   const { activeFilter, searchKeyword } = useSelector((state) => state.filters);
 
   const filteredProducts = filterProducts(products, searchKeyword);
@@ -35,12 +35,14 @@ export const Products = () => {
     if (request === "next") paginatedProducts.next();
   };
 
-  console.log({ data: paginatedProducts });
   return (
     <div className="w-full h-full">
       <Header />
       <div className="w-full bg-gray-100 pt-20">
-        <Filters />
+        <Filters
+          pageQuantity={paginatedProducts.maxPage}
+          productsAmount={filteredAndSortedProducts.length}
+        />
         <div className="w-full flex flex-col items-center justify-center pb-20">
           {paginatedProducts.currentData().length === 0 && (
             <div className="w-full h-full flex items-center justify-center py-32 ">

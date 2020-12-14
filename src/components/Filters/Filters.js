@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { setActiveFilterAction } from "../../actions/filters";
 import { SearchBar } from "./SearchBar";
 
-export const Filters = () => {
+const Filters = ({ pageQuantity, productsAmount }) => {
   const [activeFilter, setActiveFilter] = useState("most-recent");
 
   const dispatch = useDispatch();
@@ -16,7 +17,16 @@ export const Filters = () => {
     <div className="w-full flex justify-center">
       <div className="w-5/6 flex border-b border-gray-300 mb-4 pb-4">
         <div className="flex items-center pr-8 py-2">
-          <p className="text-gray-800 text-lg">16 of 32 products</p>
+          {pageQuantity === 1 && (
+            <p className="text-gray-800 text-lg">
+              {productsAmount} of {productsAmount} products
+            </p>
+          )}
+          {pageQuantity !== 1 && (
+            <p className="text-gray-800 text-lg">
+              16 of {productsAmount} products
+            </p>
+          )}
         </div>
         <div className="flex items-center flex-grow pl-8 border-l border-gray-300 py-2">
           <div className="text-gray-800 text-lg">Sort By: </div>
@@ -59,3 +69,10 @@ export const Filters = () => {
     </div>
   );
 };
+
+Filters.propTypes = {
+  pageQuantity: PropTypes.number,
+  productsAmount: PropTypes.number,
+};
+
+export { Filters };
