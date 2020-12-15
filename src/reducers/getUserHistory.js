@@ -5,7 +5,7 @@ import {
 } from "../actions/getUserHistory";
 
 const initialState = {
-  userHistory: {},
+  userHistory: [],
   error: false,
   loading: false,
 };
