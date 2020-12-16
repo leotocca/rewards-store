@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSearchKeyword, clearSearchKeyword } from "../../actions/filters";
 import searchIcon from "../../assets/svg/searchbar/searchIcon.svg";
@@ -8,12 +8,9 @@ export const SearchBar = () => {
   const [keyword, setKeyword] = useState("");
   const dispatch = useDispatch();
 
-  const setAndDispatchSearch = (value) => {
-    console.log({ value });
-
-    setKeyword(value);
+  useEffect(() => {
     dispatch(setSearchKeyword(keyword));
-  };
+  }, [dispatch, keyword]);
 
   const clearSearch = () => {
     setKeyword("");
@@ -21,14 +18,14 @@ export const SearchBar = () => {
   };
 
   return (
-    <div className="flex items-center">
-      <div className="relative">
+    <div className="w-full sm:w-1/2 md:w-1/3 lg:w-64 flex items-center ">
+      <div className="w-full relative">
         <input
           type="text"
-          className="w-full h-8 mr-6 rounded-3xl shadow text-sm px-5 py-5 focus:outline-none"
+          className="w-full h-8 lg:mr-6 rounded-3xl shadow text-sm px-5 py-5 focus:outline-none"
           placeholder="Search a product..."
           value={keyword}
-          onChange={(e) => setAndDispatchSearch(e.target.value)}
+          onChange={(e) => setKeyword(e.target.value)}
         />
         <div
           className={`absolute top-0 right-0 h-3 w-3 mt-4 mr-4 ${

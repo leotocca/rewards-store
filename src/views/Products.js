@@ -38,7 +38,7 @@ export const Products = () => {
   return (
     <div className="w-full h-full">
       <Header title={"Electronics"} />
-      <div className="w-full bg-gray-100 pt-20">
+      <div className="w-full bg-gray-100 pt-8 sm:pt-20">
         <Filters
           pageQuantity={paginatedProducts.maxPage}
           productsAmount={filteredAndSortedProducts.length}
