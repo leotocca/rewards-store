@@ -67,7 +67,7 @@ const Filters = ({ pageQuantity, productsAmount }) => {
           </div>
         </div>
 
-        <div className="w-full lg:w-64 flex items-center pr-2 py-2 mt-3 lg:mt-0 order-1">
+        <div className="w-full lg:w-64 flex items-center pr-2 py-2 mt-2 lg:mt-0 order-1">
           <SearchBar />
         </div>
       </div>
