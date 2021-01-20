@@ -1,10 +1,8 @@
+# [Rewards Store app](https://rewards-store-4rsr2kavf.vercel.app/)
 
+#### [See live](https://rewards-store-4rsr2kavf.vercel.app/)
 
-# [Rewards Store app](https://leotocca.github.io/rewards-store/)
-
-#### [See live](https://leotocca.github.io/rewards-store/)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and has been deployed with [Vercel](https://vercel.com/).
 
 It's a rewards store React app from this [Aerolab coding challenge](https://aerolabchallenge.docs.apiary.io/#reference).
 
