@@ -1,6 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Rewards Store app
+
+# [Rewards Store app](https://leotocca.github.io/rewards-store/)
+
+#### [See live](https://leotocca.github.io/rewards-store/)
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 It's a rewards store React app from this [Aerolab coding challenge](https://aerolabchallenge.docs.apiary.io/#reference).
 
