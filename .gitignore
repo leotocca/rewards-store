@@ -28,3 +28,5 @@ src/tailwind.output.css
 .env
 
 .gitattributes
+
+package-lock.json
